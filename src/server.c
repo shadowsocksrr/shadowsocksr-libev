@@ -444,6 +444,7 @@ create_and_bind(const char *host, const char *port, int mptcp)
         }
 
         close(listen_sock);
+        listen_sock = -1;
     }
 
     if (rp == NULL) {
