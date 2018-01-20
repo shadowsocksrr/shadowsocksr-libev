@@ -386,6 +386,11 @@ create_and_bind(const char *host, const char *port, int mptcp)
         return -1;
     }
 
+    if (rp == NULL) {
+        LOGE("Could not bind");
+        return -1;
+    }
+
     rp = result;
 
     /*
@@ -444,11 +449,7 @@ create_and_bind(const char *host, const char *port, int mptcp)
         }
 
         close(listen_sock);
-    }
-
-    if (rp == NULL) {
-        LOGE("Could not bind");
-        return -1;
+      listen_sock = -1;
     }
 
     freeaddrinfo(result);

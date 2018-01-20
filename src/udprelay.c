@@ -411,6 +411,11 @@ create_server_socket(const char *host, const char *port)
         return -1;
     }
 
+    if (rp == NULL) {
+        LOGE("[udp] cannot bind");
+        return -1;
+    }
+ 
     rp = result;
 
     /*
@@ -483,11 +488,7 @@ create_server_socket(const char *host, const char *port)
         }
 
         close(server_sock);
-    }
-
-    if (rp == NULL) {
-        LOGE("[udp] cannot bind");
-        return -1;
+        server_sock = -1;
     }
 
     freeaddrinfo(result);
