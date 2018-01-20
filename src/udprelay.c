@@ -483,6 +483,7 @@ create_server_socket(const char *host, const char *port)
         }
 
         close(server_sock);
+        server_sock = -1;
     }
 
     if (rp == NULL) {

@@ -169,6 +169,7 @@ create_and_bind(const char *addr, const char *port)
         }
 
         close(listen_sock);
+        listen_sock = -1;
     }
 
     if (rp == NULL) {
