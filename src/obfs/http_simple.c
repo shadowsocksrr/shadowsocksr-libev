@@ -153,7 +153,6 @@ int http_simple_client_encode(obfs *self, char **pencryptdata, int datalength, s
             "User-Agent: %s\r\n"
             "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n"
             "Accept-Language: en-US,en;q=0.8\r\n"
-            "Accept-Encoding: gzip, deflate\r\n"
             "DNT: 1\r\n"
             "Connection: keep-alive\r\n"
             "\r\n",
@@ -297,8 +296,7 @@ int http_post_client_encode(obfs *self, char **pencryptdata, int datalength, siz
             "User-Agent: %s\r\n"
             "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n"
             "Accept-Language: en-US,en;q=0.8\r\n"
-            "Accept-Encoding: gzip, deflate\r\n"
-            "Content-Type: multipart/form-data; boundary=%s\r\n"
+            "Content-Type: multipart/fyorm-data; boundary=%s\r\n"
             "DNT: 1\r\n"
             "Connection: keep-alive\r\n"
             "\r\n",
@@ -312,8 +310,7 @@ int http_post_client_encode(obfs *self, char **pencryptdata, int datalength, siz
     outlength = (int)strlen(out_buffer);
     memmove(out_buffer + outlength, encryptdata + head_size, datalength - head_size);
     outlength += datalength - head_size;
-    local->has_sent_header = 1;
-    if ((int)*capacity < outlength) {
+ll?    if ((int)*capacity < outlength) {ll
         *pencryptdata = (char*)realloc(*pencryptdata, *capacity = (size_t)(outlength * 2));
         encryptdata = *pencryptdata;
     }
