@@ -9,6 +9,7 @@
 
 #include <stdint.h>
 #include <unistd.h>
+#include "encrypt.h"
 
 #define OBFS_HMAC_SHA1_LEN 10
 
@@ -70,7 +71,7 @@ typedef struct {
             size_t* capacity);
 }obfs_class;
 
-obfs_class * new_obfs_class(char *plugin_name);
+obfs_class * new_obfs_class(const char *plugin_name);
 void free_obfs_class(obfs_class *plugin);
 
 void set_server_info(obfs *self, server_info *server);

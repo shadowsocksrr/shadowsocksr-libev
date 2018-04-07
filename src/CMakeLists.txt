@@ -1,58 +1,124 @@
+
+set(CMAKE_C_STANDARD 99)
+
 set(SOURCE_FILES_SNI
         http.c
+        http.h
         tls.c
-        rule.c)
+        tls.h
+        rule.c
+        rule.h)
+
+set(SOURCE_FILES_OBFS
+        obfs/verify.c
+        obfs/verify.h
+        obfs/tls1.2_ticket.c
+        obfs/tls1.2_ticket.h
+        obfs/obfsutil.c
+        obfs/obfsutil.h
+        obfs/obfs.c
+        obfs/obfs.h
+        obfs/http_simple.c
+        obfs/http_simple.h
+        obfs/crc32.c
+        obfs/crc32.h
+        obfs/base64.c
+        obfs/base64.h
+        obfs/auth_chain.c
+        obfs/auth_chain.h
+        obfs/auth.c
+        obfs/auth.h)
 
 set(SOURCE_FILES_LOCAL
         utils.c
+        utils.h
         jconf.c
+        jconf.h
         json.c
+        json.h
         encrypt.c
+        encrypt.h
         udprelay.c
+        udprelay.h
         cache.c
+        cache.h
         acl.c
+        acl.h
         netutils.c
+        netutils.h
         local.c
+        local.h
+        ${SOURCE_FILES_OBFS}
         ${SOURCE_FILES_SNI})
 
 set(SOURCE_FILES_TUNNEL
         utils.c
+        utils.h
         jconf.c
+        jconf.h
         json.c
+        json.h
         encrypt.c
+        encrypt.h
         udprelay.c
+        udprelay.h
         cache.c
+        cache.h
         netutils.c
-        tunnel.c)
+        netutils.h
+        tunnel.c
+        tunnel.h)
 
 set(SOURCE_FILES_SERVER
         utils.c
+        utils.h
         jconf.c
+        jconf.h
         json.c
+        json.h
         encrypt.c
+        encrypt.h
         udprelay.c
+        udprelay.h
         cache.c
+        cache.h
         acl.c
+        acl.h
         resolv.c
+        resolv.h
         netutils.c
+        netutils.h
         server.c
+        server.h
+        ${SOURCE_FILES_OBFS}
         ${SOURCE_FILES_SNI})
 
 set(SOURCE_FILES_MANAGER
         utils.c
+        utils.h
         jconf.c
+        jconf.h
         json.c
+        json.h
         manager.c)
 
 set(SOURCE_FILES_REDIR
         utils.c
+        utils.h
         jconf.c
+        jconf.h
         json.c
+        json.h
         encrypt.c
+        encrypt.h
         netutils.c
+        netutils.h
         cache.c
+        cache.h
         udprelay.c
+        udprelay.h
         redir.c
+        redir.h
         ${SOURCE_FILES_SNI})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

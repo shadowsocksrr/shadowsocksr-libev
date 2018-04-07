@@ -144,6 +144,11 @@ create_and_bind(const char *addr, const char *port)
         return -1;
     }
 
+    if (result == NULL) {
+        LOGE("Could not bind");
+        return -1;
+    }
+
     for (rp = result; rp != NULL; rp = rp->ai_next) {
         listen_sock = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
         if (listen_sock == -1) {
@@ -169,11 +174,7 @@ create_and_bind(const char *addr, const char *port)
         }
 
         close(listen_sock);
-    }
-
-    if (rp == NULL) {
-        LOGE("Could not bind");
-        return -1;
+        listen_sock = -1;
     }
 
     freeaddrinfo(result);
